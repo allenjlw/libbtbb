@@ -591,7 +591,7 @@ void lell_print(const lell_packet *pkt)
 			break;
 		}
 	} else {
-        /* modify original moving to the end
+        /* modify original moving into adv_ind, adv_nonconn_ind, adv_scan_ind case
 		printf("Advertising / AA %08x (%s)/ %2d bytes\n", pkt->access_address,
 		       pkt->flags.as_bits.access_address_ok ? "valid" : "invalid",
 		       pkt->length);
@@ -614,6 +614,8 @@ void lell_print(const lell_packet *pkt)
 					_dump_scan_rsp_data(&pkt->symbols[12], pkt->length-6);
                     modify comment out end */
 				}
+                printf("Channel Index: %d\n", pkt->channel_idx);
+                printf("Type:  %s\n", lell_get_adv_type_str(pkt));
 				break;
 			case ADV_DIRECT_IND:
                 /* modify comment out
@@ -622,20 +624,20 @@ void lell_print(const lell_packet *pkt)
                 modify comment out end */
 				break;
 			case SCAN_REQ:
-                /* modify comment out
+                ///* modify comment out
 				_dump_addr("ScanA: ", pkt->symbols, 6, pkt->adv_tx_add);
 				_dump_addr("AdvA:  ", pkt->symbols, 12, pkt->adv_rx_add);
-                modify comment out end */
+                //modify comment out end */
 				break;
 			case SCAN_RSP:
-                /* modify comment out
+                //* modify comment out
 				_dump_addr("AdvA:  ", pkt->symbols, 6, pkt->adv_tx_add);
 				printf("    ScanRspData:");
 				for (i = 0; i < pkt->length - 6; ++i)
 					printf(" %02x", pkt->symbols[12+i]);
 				printf("\n");
 				_dump_scan_rsp_data(&pkt->symbols[12], pkt->length-6);
-                modify comment out end */
+                //modify comment out end */
 				break;
 			case CONNECT_REQ:
 				_dump_addr("InitA: ", pkt->symbols, 6, pkt->adv_tx_add);
@@ -659,8 +661,6 @@ void lell_print(const lell_packet *pkt)
 						CONNECT_SCA[pkt->symbols[39] >> 5]);
 				break;
 		}
-        printf("Channel Index: %d\n", pkt->channel_idx);
-        printf("Type:  %s\n", lell_get_adv_type_str(pkt));
 	}
     /* modify commented out
 	printf("\n");
