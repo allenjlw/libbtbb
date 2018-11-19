@@ -640,6 +640,7 @@ void lell_print(const lell_packet *pkt)
                 modify comment out end */
 				break;
 			case CONNECT_REQ:
+                printf("Type:  %s\n", lell_get_adv_type_str(pkt));
 				_dump_addr("InitA: ", pkt->symbols, 6, pkt->adv_tx_add);
 				_dump_addr("AdvA:  ", pkt->symbols, 12, pkt->adv_rx_add);
                 /* modify comment out
