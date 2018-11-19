@@ -602,6 +602,7 @@ void lell_print(const lell_packet *pkt)
 			case ADV_IND:
 			case ADV_NONCONN_IND:
 			case ADV_SCAN_IND:
+                printf("Type:  %s\n", lell_get_adv_type_str(pkt));
 				_dump_addr("AdvA:  ", pkt->symbols, 6, pkt->adv_tx_add);
 				if (pkt->length-6 > 0) {
                     /* modify remove prespaces */
@@ -615,7 +616,6 @@ void lell_print(const lell_packet *pkt)
                     modify comment out end */
 				}
                 printf("Channel Index: %d\n", pkt->channel_idx);
-                printf("Type:  %s\n", lell_get_adv_type_str(pkt));
 				break;
 			case ADV_DIRECT_IND:
                 /* modify comment out
@@ -642,6 +642,7 @@ void lell_print(const lell_packet *pkt)
 			case CONNECT_REQ:
 				_dump_addr("InitA: ", pkt->symbols, 6, pkt->adv_tx_add);
 				_dump_addr("AdvA:  ", pkt->symbols, 12, pkt->adv_rx_add);
+                /* modify comment out
 				_dump_32("AA:    ", pkt->symbols, 18);
 				_dump_24("CRCInit: ", pkt->symbols, 22);
 				_dump_8("WinSize: ", pkt->symbols, 25);
@@ -649,7 +650,6 @@ void lell_print(const lell_packet *pkt)
 				_dump_16("Interval: ", pkt->symbols, 28);
 				_dump_16("Latency: ", pkt->symbols, 30);
 				_dump_16("Timeout: ", pkt->symbols, 32);
-
 				printf("    ChM:");
 				for (i = 0; i < 5; ++i)
 					printf(" %02x", pkt->symbols[34+i]);
@@ -659,6 +659,7 @@ void lell_print(const lell_packet *pkt)
 				printf("    SCA: %d, %s\n",
 						pkt->symbols[39] >> 5,
 						CONNECT_SCA[pkt->symbols[39] >> 5]);
+                modify comment out end*/
 				break;
 		}
 	}
