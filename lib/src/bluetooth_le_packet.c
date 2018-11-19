@@ -624,20 +624,20 @@ void lell_print(const lell_packet *pkt)
                 modify comment out end */
 				break;
 			case SCAN_REQ:
-                ///* modify comment out
+                /* modify comment out
 				_dump_addr("ScanA: ", pkt->symbols, 6, pkt->adv_tx_add);
 				_dump_addr("AdvA:  ", pkt->symbols, 12, pkt->adv_rx_add);
-                //modify comment out end */
+                modify comment out end */
 				break;
 			case SCAN_RSP:
-                //* modify comment out
+                /* modify comment out
 				_dump_addr("AdvA:  ", pkt->symbols, 6, pkt->adv_tx_add);
 				printf("    ScanRspData:");
 				for (i = 0; i < pkt->length - 6; ++i)
 					printf(" %02x", pkt->symbols[12+i]);
 				printf("\n");
 				_dump_scan_rsp_data(&pkt->symbols[12], pkt->length-6);
-                //modify comment out end */
+                modify comment out end */
 				break;
 			case CONNECT_REQ:
 				_dump_addr("InitA: ", pkt->symbols, 6, pkt->adv_tx_add);
