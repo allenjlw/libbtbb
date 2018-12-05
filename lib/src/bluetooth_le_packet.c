@@ -602,8 +602,8 @@ void lell_print(const lell_packet *pkt)
 			case ADV_IND:
 			case ADV_NONCONN_IND:
 			case ADV_SCAN_IND:
-                printf("Type:  %s\n", lell_get_adv_type_str(pkt));
-				_dump_addr("AdvA:  ", pkt->symbols, 6, pkt->adv_tx_add);
+                printf("Type: %s\n", lell_get_adv_type_str(pkt));
+				_dump_addr("AdvA: ", pkt->symbols, 6, pkt->adv_tx_add);
 				if (pkt->length-6 > 0) {
                     /* modify remove prespaces */
 					printf("AdvData:");
@@ -640,9 +640,9 @@ void lell_print(const lell_packet *pkt)
                 modify comment out end */
 				break;
 			case CONNECT_REQ:
-                printf("Type:  %s\n", lell_get_adv_type_str(pkt));
+                printf("Type: %s\n", lell_get_adv_type_str(pkt));
 				_dump_addr("InitA: ", pkt->symbols, 6, pkt->adv_tx_add);
-				_dump_addr("AdvA:  ", pkt->symbols, 12, pkt->adv_rx_add);
+				_dump_addr("AdvA: ", pkt->symbols, 12, pkt->adv_rx_add);
                 /* modify comment out
 				_dump_32("AA:    ", pkt->symbols, 18);
 				_dump_24("CRCInit: ", pkt->symbols, 22);
